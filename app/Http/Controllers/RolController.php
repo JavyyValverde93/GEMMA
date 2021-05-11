@@ -35,7 +35,18 @@ class RolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required'
+        ]);
+        
+        try{
+            $rol = new Rol();
+            $rol->nombre = $request->nombre;
+            $rol->save();
+            return back()->with('mensaje', 'Rol creado');
+        }catch(\Exception $ex){
+            return back()->with('error', 'El rol no ha podido crearse');
+        }
     }
 
     /**
@@ -69,7 +80,17 @@ class RolController extends Controller
      */
     public function update(Request $request, Rol $rol)
     {
-        //
+        $request->validate([
+            'nombre' => 'required'
+        ]);
+        
+        try{
+            $rol->nombre = $request->nombre;
+            $rol->save();
+            return back()->with('mensaje', 'Rol modificado');
+        }catch(\Exception $ex){
+            return back()->with('error', 'El rol no ha podido modificarse');
+        }
     }
 
     /**

@@ -87,12 +87,14 @@ class PlazoprescripcionController extends Controller
     {
         $request->validate([
             'nombre' => 'required',
-            'fecha' => 'required'
+            'fecha_inicio' => 'required',
+            'fecha_fin' => 'required',
         ]);
 
         try{
             $plazoprescripcion->nombre = $request->nombre;
-            $plazoprescripcion->fecha = $request->fecha->getTimestamp();
+            $plazoprescripcion->fecha_inicio = $request->fecha_inicio;
+            $plazoprescripcion->fecha_fin = $request->fecha_fin;
 
             $plazoprescripcion->save();
 

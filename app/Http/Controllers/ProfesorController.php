@@ -168,7 +168,6 @@ class ProfesorController extends Controller
 
         try{
 
-            $profesor = new Profesor();
             $profesor->nombre = $request->nombre;
             $profesor->apellidos = $request->apellidos;
             $profesor->dni = $request->dni;

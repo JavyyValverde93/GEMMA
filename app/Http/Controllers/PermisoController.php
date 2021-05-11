@@ -35,7 +35,18 @@ class PermisoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required'
+        ]);
+        
+        try{
+            $permiso = new Permiso();
+            $permiso->nombre = $request->nombre;
+            $permiso->save();
+            return back()->with('mensaje', 'Permiso creado');
+        }catch(\Exception $ex){
+            return back()->with('error', 'El permiso no ha podido crearse');
+        }
     }
 
     /**

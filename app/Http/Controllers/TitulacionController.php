@@ -50,7 +50,7 @@ class TitulacionController extends Controller
             $titulacion->titulacion = $request->titulacion;
             $titulacion->save();
 
-            // return
+            return back()->with('mensaje', 'Titulación creada');
         }catch(\Exception $ex){
             return back()->with('error', 'No se ha podido crear la titulación');
         }
@@ -87,7 +87,24 @@ class TitulacionController extends Controller
      */
     public function update(Request $request, Titulacion $titulacion)
     {
-        //
+        $request->validate([
+            'id_profesor' => 'required',
+            'id_actividad' => 'required',
+            'especialidad' => 'required',
+            'titulacion' => 'required'
+        ]);
+
+        try{
+            $titulacion->id_profesor = $request->id_profesor;
+            $titulacion->id_actividad = $request->id_actividad;
+            $titulacion->especialidad = $request->especialidad;
+            $titulacion->titulacion = $request->titulacion;
+            $titulacion->save();
+
+            return back()->with('mensaje', 'Titulación modificada');
+        }catch(\Exception $ex){
+            return back()->with('error', 'No se ha podido modificar la titulación');
+        }
     }
 
     /**

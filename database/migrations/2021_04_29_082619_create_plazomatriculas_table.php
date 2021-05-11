@@ -16,7 +16,8 @@ class CreatePlazomatriculasTable extends Migration
         Schema::create('plazomatriculas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->bigInteger('fecha');
+            $table->bigInteger('fecha_inicio');
+            $table->bigInteger('fecha_fin');
             // $table->timestamps();
         });
     }

@@ -35,7 +35,21 @@ class ComunicacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_usuario' => 'required',
+            'mensaje' => 'required'
+        ]);
+
+        try{
+            $comunicacion = new Comunicacion();
+            $comunicacion->id_usuario = $request->id_usuario;
+            $comunicacion->mensaje = $request->mensaje;
+
+            $comunicacion->save();
+            return back()->with('mensaje', 'Mensaje creado');
+        }catch(\Exception $ex){
+            return back()->with('error', 'No ha podido crearse el mensaje');
+        }
     }
 
     /**

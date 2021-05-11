@@ -86,7 +86,23 @@ class PrescripcionController extends Controller
      */
     public function update(Request $request, Prescripcion $prescripcion)
     {
-        //
+        $request->validate([
+            'id_usuario' => 'required',
+            'id_actividad' => 'required',
+            'id_plazoprescripcion' => 'required'
+        ]);
+
+        try{
+            $prescripcion->id_usuario = $request->id_usuario;
+            $prescripcion->id_actividad = $request->id_actividad;
+            $prescripcion->id_plazoprescripcion = $request->id_plazoprescripcion;
+            $prescripcion->fecha_creacion = now()->getTimestamp();
+            $prescripcion->save();
+
+            return back()->with('mensaje', 'Prescripción modificada');
+        }catch(\Exception $ex){
+            return back()->with('error', 'La prescripción no ha podido modificarse');
+        }
     }
 
     /**

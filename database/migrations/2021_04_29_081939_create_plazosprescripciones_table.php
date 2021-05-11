@@ -16,7 +16,8 @@ class CreatePlazosprescripcionesTable extends Migration
         Schema::create('plazosprescripciones', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->bigInteger('fecha');
+            $table->bigInteger('fecha_inicio');
+            $table->bigInteger('fecha_fin');
             // $table->timestamps();
         });
     }

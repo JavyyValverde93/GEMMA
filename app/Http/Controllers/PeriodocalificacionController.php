@@ -35,7 +35,22 @@ class PeriodocalificacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+            'fecha_inicio' => 'required',
+            'fecha_fin' => 'required'
+        ]);
+
+        try{
+            $periodocalificacion = new Periodocalificacion();
+            $periodocalificacion->nombre = $request->nombre;
+            $periodocalificacion->fecha_inicio = $request->fecha_inicio;
+            $periodocalificacion->fecha_fin = $request->fecha_fin;
+            $periodocalificacion->save();
+            return back()->with('mensaje', 'Periodo creado');
+        }catch(\Exception $ex){
+            return back()->with('error', 'No ha podido crearse el periodo');
+        }
     }
 
     /**
@@ -69,7 +84,21 @@ class PeriodocalificacionController extends Controller
      */
     public function update(Request $request, Periodocalificacion $periodocalificacion)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+            'fecha_inicio' => 'required',
+            'fecha_fin' => 'required'
+        ]);
+
+        try{
+            $periodocalificacion->nombre = $request->nombre;
+            $periodocalificacion->fecha_inicio = $request->fecha_inicio;
+            $periodocalificacion->fecha_fin = $request->fecha_fin;
+            $periodocalificacion->save();
+            return back()->with('mensaje', 'Periodo modificado');
+        }catch(\Exception $ex){
+            return back()->with('error', 'No ha podido modificarse el periodo');
+        }
     }
 
     /**

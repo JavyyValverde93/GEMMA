@@ -37,13 +37,15 @@ class PlazomatriculaController extends Controller
     {
         $request->validate([
             'nombre' => 'required',
-            'fecha' => 'required'
+            'fecha_inicio' => 'required',
+            'fecha_fin' => 'required'
         ]);
 
         try{
             $plazomatricula = new Plazomatricula();
             $plazomatricula->nombre = $request->nombre;
-            $plazomatricula->fecha = $request->fecha->getTimestamp();
+            $plazomatricula->fecha_inicio = $request->fecha_inicio;
+            $plazomatricula->fecha_fin = $request->fecha_fin;
 
             $plazomatricula->save();
 
@@ -87,12 +89,14 @@ class PlazomatriculaController extends Controller
     {
         $request->validate([
             'nombre' => 'required',
-            'fecha' => 'required'
+            'fecha_inicio' => 'required',
+            'fecha_fin' => 'required'
         ]);
 
         try{
             $plazomatricula->nombre = $request->nombre;
-            $plazomatricula->fecha = $request->fecha->getTimestamp();
+            $plazomatricula->fecha_inicio = $request->fecha_inicio;
+            $plazomatricula->fecha_fin = $request->fecha_fin;
 
             $plazomatricula->save();
 
