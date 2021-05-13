@@ -14,7 +14,8 @@ class ActividadController extends Controller
      */
     public function index()
     {
-        //
+        $actividades = Actividad::orderBy('id')->get();
+        return view('actividades.index', compact('actividades'));
     }
 
     /**

@@ -27,7 +27,6 @@ Route::get('/dashboard', function () {
     return view('administracion/panel');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/listado-alumnos/', [AlumnoController::class, 'index'])->name('lista-alumnos');
 
 require __DIR__.'/auth.php';
 
@@ -37,7 +36,7 @@ Route::resource('facturaciones', FacturacionController::class)->middleware(['aut
 Route::resource('comunicaciones', ComunicacionController::class)->middleware(['auth']);
 Route::resource('destinatarios', DestinatarioController::class)->middleware(['auth']);
 Route::resource('actividades', ActividadController::class)->middleware(['auth']);
-Route::resource('alumnnos', AlumnoController::class)->middleware(['auth']);
+Route::resource('alumnos', AlumnoController::class);
 Route::resource('asistencias', AsistenciaController::class)->middleware(['auth']);
 Route::resource('calificaciones', CalificacionController::class)->middleware(['auth']);
 Route::resource('categorias', CategoriaController::class)->middleware(['auth']);

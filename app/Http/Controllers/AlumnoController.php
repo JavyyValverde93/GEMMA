@@ -25,7 +25,7 @@ class AlumnoController extends Controller
 
         $alumnos=Alumno::orderBy('nombre')->paginate(5);
 
-		return view('administracion/lista-alumnos',compact('alumnos'));
+		return view('alumnos.index',compact('alumnos'));
     }
 
     /**
