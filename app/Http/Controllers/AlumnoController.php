@@ -19,13 +19,13 @@ class AlumnoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //Mostrar un listado de alumnos
 
         $alumnos=Alumno::orderBy('nombre')->paginate(5);
 
-		return view('alumnos.index',compact('alumnos'));
+		return view('alumnos.index',compact('alumnos', 'request'));
     }
 
     /**
